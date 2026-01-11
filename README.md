@@ -4,11 +4,13 @@
 
 Reactionary is a simple reaction-testing game that allows users to test their reaction times and compare them with the average reaction time and compare them with the reaction times of others. It will take three tests and then average out the results.
 
+There are many factors to reaction time, and the hope is to help others recognize how those factors affect their reaction times.
+
 ## 🚀 Specification Deliverable
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] Proper use of Markdown
+- [x] Proper use of Markdown
 - [x] A concise and compelling elevator pitch
 - [x] Description of key features
 - [ ] Description of how you will use each technology
@@ -45,12 +47,12 @@ sequenceDiagram
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - 
-- **CSS** - Description here
-- **React** - Description here
-- **Service** - Description here
-- **DB/Login** - Description here
-- **WebSocket** - Description here
+- **HTML** - Two HTML pages. One for login and the other for button test and scoring.
+- **CSS** - Styling that uses color contrast for button and leaderboard. Different formatting for different screen sizes.
+- **React** - Login functionality, Button functionality, and displaying scoreboard.
+- **Service** - Backend with endpoints for submitting scores, login, and recieving scores.
+- **DB/Login** - Stores login users and scores. Users who are not registered or logged in cannot have their scores posted.
+- **WebSocket** - Scores are updated and shown to all users.
 
 ## 🚀 AWS deliverable
 
