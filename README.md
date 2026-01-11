@@ -2,7 +2,7 @@
 
 [My Notes](notes.md)
 
-Reactionary is a simple reaction-testing game that allows users to test their reaction times and compare them with the average reaction time and compare them with the reaction times of others.
+Reactionary is a simple reaction-testing game that allows users to test their reaction times and compare them with the average reaction time and compare them with the reaction times of others. It will take three tests and then average out the results.
 
 ## 🚀 Specification Deliverable
 
@@ -10,7 +10,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 - [ ] Proper use of Markdown
 - [x] A concise and compelling elevator pitch
-- [ ] Description of key features
+- [x] Description of key features
 - [ ] Description of how you will use each technology
 - [ ] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
 
@@ -33,15 +33,19 @@ sequenceDiagram
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+- Secure login over HTTPS
+- Button that must be clicked on
+- Timer
+- Randomized times between button presses
+- Totals from all users in real time
+- Scoreboard
+- Results are permanently stored
 
 ### Technologies
 
 I am going to use the required technologies in the following ways.
 
-- **HTML** - Description here
+- **HTML** - 
 - **CSS** - Description here
 - **React** - Description here
 - **Service** - Description here
