@@ -54,11 +54,11 @@ I am going to use the required technologies in the following ways.
 - **CSS** - Styling that uses color contrast for button and leaderboard. Different formatting for different screen sizes.
 - **React** - Login functionality, Button functionality, and displaying scoreboard.
 - **Service** - Backend with endpoints for 
- - submitting scores 
- - login 
- - recieving scores
- - retrieving user data
- - Calls to (https://random-d.uk/api) for randomized reaction images.
+    -  submitting scores 
+    -  login 
+    -  recieving scores
+    -  retrieving user data
+    -  Calls to (https://random-d.uk/api) for randomized reaction images.
 - **DB/Login** - Stores login users and scores. Users who are not registered or logged in cannot have their scores posted.
 - **WebSocket** - Scores are updated and shown to all users.
 
