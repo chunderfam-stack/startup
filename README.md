@@ -18,18 +18,22 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 ### Elevator pitch
 
-Test how fast you are! Find your reaction time and see how you compare to others. Prove to your friends that your reaction time is better than others. However, this isn't just your ordinary reaction test. This tests users in all kinds of situations, sometimes random locations or random pictures.
+Test how fast you are! Find your reaction time and see how you compare to others. Prove to your friends that your reaction time is better than others. However, this isn't just your ordinary reaction test. This tests users in all kinds of situations, sometimes random locations or random pictures so that user can know how they fare under different circumstances.
 
 ### Design
 
 ![Design image](Site.png)
 
-
+Rough design as to how server functionality will work.
 ```mermaid
 sequenceDiagram
-    actor You
-    actor Website
-    You->>Website: Replace this with your design
+    actor User
+    participant Website
+    User->>Website: Click
+    participant Server
+    Website->>Server: Click times
+    User->>Server:Login Info
+    Server->>Website:User Scores
 ```
 
 ### Key features
