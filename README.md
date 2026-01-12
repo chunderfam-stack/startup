@@ -4,7 +4,7 @@
 
 Reactionary is a simple reaction-testing game that allows users to test their reaction times and compare them with the average reaction time and compare them with the reaction times of others. It will take three tests and then average out the results.
 
-There are many factors to reaction time, and the hope is to help others recognize how those factors affect their reaction times.
+There are many factors to reaction time, and the hope is to help others recognize how those factors affect their reaction time by showing them different situations that impact them.
 
 ## 🚀 Specification Deliverable
 
@@ -13,18 +13,17 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [x] Proper use of Markdown
 - [x] A concise and compelling elevator pitch
 - [x] Description of key features
-- [ ] Description of how you will use each technology
+- [x] Description of how you will use each technology
 - [ ] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
 
 ### Elevator pitch
 
-Test how fast you are! Find your reaction time and see how you compare to others. Prove to your friends that your reaction time is better than others.
+Test how fast you are! Find your reaction time and see how you compare to others. Prove to your friends that your reaction time is better than others. However, this isn't just your ordinary reaction test. This tests users in all kinds of situations, sometimes random locations or random pictures.
 
 ### Design
 
-![Design image](placeholder.png)
+![Design image](Site.png)
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 ```mermaid
 sequenceDiagram
@@ -35,7 +34,7 @@ sequenceDiagram
 
 ### Key features
 
-- Secure login over HTTPS
+- Secure login using HTTPS
 - Button that must be clicked on
 - Timer
 - Randomized times between button presses
@@ -50,7 +49,12 @@ I am going to use the required technologies in the following ways.
 - **HTML** - Two HTML pages. One for login and the other for button test and scoring.
 - **CSS** - Styling that uses color contrast for button and leaderboard. Different formatting for different screen sizes.
 - **React** - Login functionality, Button functionality, and displaying scoreboard.
-- **Service** - Backend with endpoints for submitting scores, login, and recieving scores.
+- **Service** - Backend with endpoints for 
+ - submitting scores 
+ - login 
+ - recieving scores
+ - retrieving user data
+ - Calls to (https://random-d.uk/api) for randomized reaction images.
 - **DB/Login** - Stores login users and scores. Users who are not registered or logged in cannot have their scores posted.
 - **WebSocket** - Scores are updated and shown to all users.
 
