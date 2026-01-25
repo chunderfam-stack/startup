@@ -73,14 +73,14 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
 - [x] **HTML pages** - I have three pages, an about page `about.html`, the game page `game.html`, and the login page `index.html`.
-- [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
+- [x] **Proper HTML element usage** - I used several html elements and learned about a few like table and link. I also learned a bit about how svg works and how to organize html pages a bit better.
 - [x] **Links** - Each page links to the other pages
 - [x] **Text** - Every page has headers and the about me page has text describing the game.
 - [x] **3rd party API placeholder** - Placeholder ducks for distraction. Will call random duck for 3rd party. Also 3rd party placeholder for chart creation.
 - [x] **Images** - Two placeholder ducks.
 - [x] **Login placeholder** - Placeholder login in `index.html`
-- [x] **DB data placeholder** - I did not complete this part of the deliverable.
-- [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
+- [x] **DB data placeholder** - Placeholder table for high scores.
+- [x] **WebSocket placeholder** - Notification placeholder for player input.
 
 ## 🚀 CSS deliverable
 
