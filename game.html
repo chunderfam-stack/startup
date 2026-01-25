@@ -23,13 +23,56 @@
      <hr />
     </header>
     <main>
+        <img src="duck-placeholder.jpg" height="100" width="100">
+        <button>
+            <svg height="100" width="100">
+                <circle cx="50" cy="50" r="43" stroke="None" fill="Green"/>
+                <circle cx="50" cy="50" r="49" fill="none" stroke="Green"/>
+            </svg>  
+        </button>
+        <img src="duck-placeholder.jpg" height="100" width="100">
         <hr />
+        <label class="switch">
+        <input type="checkbox">
+        <span class="slider round">Duck Mode</span>
+        </label>
     </main>
     <footer>
+        <h1>Statistics</h1>
     <!--Used later to add a chart to the html page-->
         <canvas>
             id="myChart" style="width:100%;max-width:700px"
         </canvas>
+        <p>Average Reaction Time: 0.5675ms</p>
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Time</th>
+            </tr>
+            <tr>
+                <td>Grace</td>
+                <td>0.457ms</td>
+            </tr>
+            <tr>
+                <td>Alan</td>
+                <td>0.506ms</td>
+            </tr>
+            <tr>
+                <td>Michael</td>
+                <td>0.750ms</td>
+            </tr>
+            <tr>
+                <td>Barry</td>
+                <td>1.534ms</td>
+            </tr>
+        </table>
+        <h6>Your time: 4565ms</h6>
+        <ul class="notification">
+            <li class="player-name">Grace got a time of 0.5ms</li>
+            <li class="player-name">Alan got a time of 9ms</li>
+            <li class="player-name">Barry got a time of 8018ms</li>
+        </ul>
+        
     </footer>
 </body>
 </html>
