@@ -76,10 +76,10 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 - [ ] **Proper HTML element usage** - I did not complete this part of the deliverable.
 - [x] **Links** - Each page links to the other pages
 - [x] **Text** - Every page has headers and the about me page has text describing the game.
-- [ ] **3rd party API placeholder** - I did not complete this part of the deliverable.
-- [ ] **Images** - I did not complete this part of the deliverable.
-- [ ] **Login placeholder** - I did not complete this part of the deliverable.
-- [ ] **DB data placeholder** - I did not complete this part of the deliverable.
+- [x] **3rd party API placeholder** - Placeholder ducks for distraction. Will call random duck for 3rd party. Also 3rd party placeholder for chart creation.
+- [x] **Images** - Two placeholder ducks.
+- [x] **Login placeholder** - Placeholder login in `index.html`
+- [x] **DB data placeholder** - I did not complete this part of the deliverable.
 - [ ] **WebSocket placeholder** - I did not complete this part of the deliverable.
 
 ## 🚀 CSS deliverable
