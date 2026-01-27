@@ -1,6 +1,6 @@
 # Reactionary
 
-[The site!](https://startup.reactionary.click/)
+[Link to the Site!](https://startup.reactionary.click/)
 
 [My Notes](notes.md)
 
