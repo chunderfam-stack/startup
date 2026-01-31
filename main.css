@@ -28,3 +28,9 @@ menu{
 menu .nav-item{
     padding: 0 0.3em;
 }
+
+.bg-yellow{
+    background: #EBE1C3;
+    padding: 1em;
+    border-radius: 15px;
+}
