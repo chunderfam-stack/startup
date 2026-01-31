@@ -17,7 +17,7 @@
 <body>
     <header class="bg-dark container-fluid">
         
-        <nav class="navbar fixed-top navbar-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark">
             <h1 class="navbar-brand" href="#">Reactionary</h1>
             <menu class="navbar-nav">
                 <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
@@ -29,7 +29,7 @@
     <main>
         <div class="play-area">
             <img src="duck-placeholder.jpg" height="100" width="100">
-            <button>
+            <button class="click-button">
                 <svg height="100" width="100">
                     <circle cx="50" cy="50" r="43" stroke="None" fill="Green"/>
                     <circle cx="50" cy="50" r="49" fill="none" stroke="Green"/>
@@ -37,17 +37,23 @@
         </button>
         <img src="duck-placeholder.jpg" height="100" width="100">
         </div>
-        
-        <hr />
-        <label class="switch">
-        <input type="checkbox">
-        <span class="slider round">Duck Mode</span>
-        </label>
+
+        <!--End of play area!-->
+
+        <div>
+             <label class="form-check">
+            <input class = "form-check-input" type="checkbox">
+            <span class="slider round">Duck Mode</span>
+            </label>
+        </div>
+       
         <h1>Statistics</h1>
     <!--Used later to add a chart to the html page-->
-        <canvas>
-            id="myChart" style="width:100%;max-width:700px"
-        </canvas>
+        <div>
+            <canvas>
+                id="myChart" style="width:100%;max-width:700px"
+            </canvas>
+        </div>
         <p>Average Reaction Time: 0.5675ms</p>
         <table>
             <tr>

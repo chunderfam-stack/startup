@@ -50,8 +50,12 @@ footer{
 }
 
 .play-area{
-    padding-left: 50%;
-    padding-right: 50%;
+    flex: 1;
+    width: 100%;
+    padding:75px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     background: repeating-linear-gradient(
     45deg,
     #67bed9,
@@ -59,4 +63,19 @@ footer{
     #2596be 10px,
     #2596be 20px
     );
+}
+
+.switch{
+    flex-direction: row;
+    justify-content:center;
+    align-content: start;
+}
+
+.click-button{
+    width: 150px;
+    flex: 0 0 auto;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: 2px solid black;
+    background: greenyellow;
 }
