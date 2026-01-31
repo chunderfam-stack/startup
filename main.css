@@ -8,7 +8,7 @@ header{
     flex: 0 80px;
 }
 main{
-    flex: 1 calc(100vh - 300px);
+    flex: 1 calc(100vh - 110px);
     display:flex;
     flex-direction: column;
     align-items: center;
