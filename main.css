@@ -34,3 +34,17 @@ menu .nav-item{
     padding: 1em;
     border-radius: 15px;
 }
+footer{
+    flex: 0 30px;
+}
+@media (max-height: 600px) {
+  header {
+    display: none;
+  }
+  footer {
+    display: none;
+  }
+  main {
+    flex: 1 100vh;
+  }
+}
