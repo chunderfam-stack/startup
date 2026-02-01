@@ -33,7 +33,7 @@
                 <svg height="100" width="100">
                     <circle cx="50" cy="50" r="43" stroke="None" fill="Green"/>
                     <circle cx="50" cy="50" r="49" fill="none" stroke="Green"/>
-            </svg>  
+                </svg> 
         </button>
         <img src="duck-placeholder.jpg" height="100" width="100">
         </div>
@@ -52,35 +52,42 @@
        
         <h1>Statistics</h1>
     <!--Used later to add a chart to the html page-->
-        <div>
+        <div class="stats">
             <div>
-                <canvas>
+                <svg height="400" width="400">
+                    <rect width="400" height="400" style="fill:grey"></rect>
+                </svg>
+                <!--<canvas>
                     id="myChart" style="width:100%;max-width:700px"
-                </canvas>
-                <p>Average Reaction Time: 0.5675ms</p>
+                </canvas>-->
+                <p style="margin-left: 5%;">Average Reaction Time: 0.5675ms</p>
             </div>
-            <table>
-                <tr>
-                    <th>Name</th>
-                    <th>Time</th>
-                </tr>
-                <tr>
-                    <td>Grace</td>
-                    <td>0.457ms</td>
-                </tr>
-                <tr>
-                    <td>Alan</td>
-                    <td>0.506ms</td>
-                </tr>
-                <tr>
-                    <td>Michael</td>
-                    <td>0.750ms</td>
-                </tr>
-                <tr>
-                    <td>Barry</td>
-                    <td>1.534ms</td>
-                </tr>
-            </table>
+            <div>
+                <p style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Scores</p>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Time</th>
+                    </tr>
+                    <tr>
+                        <td>Grace</td>
+                        <td>0.457ms</td>
+                    </tr>
+                    <tr>
+                        <td>Alan</td>
+                        <td>0.506ms</td>
+                    </tr>
+                    <tr>
+                        <td>Michael</td>
+                        <td>0.750ms</td>
+                    </tr>
+                    <tr>
+                        <td>Barry</td>
+                        <td>1.534ms</td>
+                    </tr>
+                </table>
+            </div>
+            
         </div>
         <p>updates:</p>
         <ul class="notification">
