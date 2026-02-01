@@ -85,37 +85,59 @@ footer{
 .below-play{
     display: grid;
     align-items: center;
-    width:100vw;
+    width:100%;
 }
 
 .text-center{
     color:darkblue;
-    justify-self: center;
+    justify-self: start;
 }
 
 h1{
-    border-bottom:grey solid;
+    width: 20%;
+    text-align: center;
+    border-bottom:grey solid 3px;
+    margin-bottom: 50px;
 }
 
-.stats{
-    width:100vw;
-    display:grid;
-    align-items: center;
-    justify-content: space-around;
-    grid-template-columns: auto auto auto;
-}
 
 .base-center{
     text-align: center;
 }
 
 .updates{
-    
+    display: grid;
+    text-align: center;
+    list-style:none;
+    justify-self: center;
+    background:#EBE1C3;
+    align-items: start;
+    padding: 0;
+    height: 30%;
+    border-radius: 10px;
 }
 
+.player-name{
+    align-self: start;
+    text-align:start;
+    margin-left: 0 auto;
+    width: 100%;
+}
+
+.notification{
+    list-style:none;
+}
+
+.stats{
+    width:100%;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+
 table{
-    padding: 10%;
     border: solid black 2px;
+    margin-left: 25%;
 }
 th{
     border: solid black 2px;
@@ -127,3 +149,10 @@ td{
     padding:10px;
     border:solid black 2px;
 }
+
+
+.graph{
+    justify-content: center;
+    margin-left: 10px;
+}
+
