@@ -39,45 +39,49 @@
         </div>
 
         <!--End of play area!-->
-
-        <div class="form-check switch">
-            <input class = "form-check-input" type="checkbox">
-            <label class="form-check-label">
-                <span class="slider round">Duck Mode</span>
-            </label>
+        <div class="below-play">
+            <div class="form-check switch">
+                <input class = "form-check-input" type="checkbox">
+                <label class="form-check-label">
+                    <span class="slider round">Duck Mode</span>
+                </label>
+            </div>
+            <p class="text-center">0.567ms</p>
         </div>
+        
        
         <h1>Statistics</h1>
     <!--Used later to add a chart to the html page-->
         <div>
-            <canvas>
-                id="myChart" style="width:100%;max-width:700px"
-            </canvas>
+            <div>
+                <canvas>
+                    id="myChart" style="width:100%;max-width:700px"
+                </canvas>
+                <p>Average Reaction Time: 0.5675ms</p>
+            </div>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Time</th>
+                </tr>
+                <tr>
+                    <td>Grace</td>
+                    <td>0.457ms</td>
+                </tr>
+                <tr>
+                    <td>Alan</td>
+                    <td>0.506ms</td>
+                </tr>
+                <tr>
+                    <td>Michael</td>
+                    <td>0.750ms</td>
+                </tr>
+                <tr>
+                    <td>Barry</td>
+                    <td>1.534ms</td>
+                </tr>
+            </table>
         </div>
-        <p>Average Reaction Time: 0.5675ms</p>
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Time</th>
-            </tr>
-            <tr>
-                <td>Grace</td>
-                <td>0.457ms</td>
-            </tr>
-            <tr>
-                <td>Alan</td>
-                <td>0.506ms</td>
-            </tr>
-            <tr>
-                <td>Michael</td>
-                <td>0.750ms</td>
-            </tr>
-            <tr>
-                <td>Barry</td>
-                <td>1.534ms</td>
-            </tr>
-        </table>
-        <h6>Your time: 4565ms</h6>
         <p>updates:</p>
         <ul class="notification">
             <li class="player-name">Grace got a time of 0.5ms</li>

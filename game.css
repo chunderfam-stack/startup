@@ -66,8 +66,7 @@ footer{
 }
 
 .switch{
-    display: block;
-    align-self:flex-start;
+    margin-left: 1%;
     background-color: #EBE1C3;
 }
 
@@ -79,3 +78,17 @@ footer{
     border: 2px solid black;
     background: greenyellow;
 }
+
+.below-play{
+    justify-content: baseline;
+    display: flex;
+    align-items: center;
+    width:100vw;
+}
+
+.text-center{
+    color:darkblue;
+    justify-self: center;
+}
+
+
