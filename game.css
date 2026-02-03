@@ -1,8 +1,8 @@
 body{
     display:flex;
     flex-direction: column;
-    min-width: 375px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    min-width: 850px;
 }
 header{
     flex: 0 80px;
@@ -44,10 +44,8 @@ footer{
   footer {
     display: none;
   }
-  main {
-    flex: 1 100vh;
-  }
 }
+
 
 .play-area{
     flex: 1;
@@ -139,7 +137,7 @@ footer{
 
 table{
     border: solid black 2px;
-    margin-left: 25%;
+    margin: 0 auto;
 }
 th{
     border: solid black 2px;
