@@ -89,11 +89,11 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
 - [ ] **Visually appealing colors and layout. No overflowing elements.** - I did not complete this part of the deliverable.
-- [ ] **Use of a CSS framework** - I did not complete this part of the deliverable.
-- [ ] **All visual elements styled using CSS** - I did not complete this part of the deliverable.
-- [ ] **Responsive to window resizing using flexbox and/or grid display** - I did not complete this part of the deliverable.
+- [x] **Use of a CSS framework** - I used bootstrap for the header navbar and checkbox for "duck mode".
+- [x] **All visual elements styled using CSS** - Every html element has some form of CSS applied to it.
+- [x] **Responsive to window resizing using flexbox and/or grid display** - All elements use either flex or grid depending upon where they are supposed to be on the page.
 - [ ] **Use of a imported font** - I did not complete this part of the deliverable.
-- [ ] **Use of different types of selectors including element, class, ID, and pseudo selectors** - I did not complete this part of the deliverable.
+- [x] **Use of different types of selectors including element, class, ID, and pseudo selectors** - I used ID for the stats title and I used classes to represent different parts of the play area and the about-me page. I used selectors for the navbar and header.
 
 ## 🚀 React part 1: Routing deliverable
 
