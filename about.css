@@ -49,6 +49,10 @@ footer{
   }
 }
 
+@font-face {
+  font-family: woffFont;
+  src: url(Typewriter-LAYy.woff);
+}
 
 .Q{
     width:50vw;
@@ -58,6 +62,7 @@ footer{
     text-indent: 10px;
     min-width: 300px;
     text-align: center;
+    font-family: woffFont;
 }
 .A{
     background-color: aliceblue;

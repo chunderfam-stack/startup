@@ -88,7 +88,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Visually appealing colors and layout. No overflowing elements.** - I did not complete this part of the deliverable.
+- [x] **Visually appealing colors and layout. No overflowing elements.** - I made stripe details and nice coloring for text objects. None of the pages overflow.
 - [x] **Use of a CSS framework** - I used bootstrap for the header navbar and checkbox for "duck mode".
 - [x] **All visual elements styled using CSS** - Every html element has some form of CSS applied to it.
 - [x] **Responsive to window resizing using flexbox and/or grid display** - All elements use either flex or grid depending upon where they are supposed to be on the page.
