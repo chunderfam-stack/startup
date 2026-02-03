@@ -12,7 +12,7 @@ main{
     display:flex;
     flex-direction: column;
     font-size: large;
-    justify-content: space-around;
+    justify-content: space-evenly;
 }
 menu{
     flex: 1;
@@ -49,11 +49,18 @@ footer{
   }
 }
 
+
 .Q{
     width:50vw;
     border-bottom: solid grey 2px;
+    background-color:bisque;
+    border-radius: 30px;
+    text-indent: 10px;
+    min-width: 300px;
+    text-align: center;
 }
-
 .A{
-    
+    background-color: aliceblue;
+    border-radius: 15px;
+    padding: 10px;
 }
