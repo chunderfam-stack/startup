@@ -93,7 +93,7 @@ footer{
     justify-self: start;
 }
 
-h1{
+.stats-title{
     width: 20%;
     text-align: center;
     border-bottom:grey solid 3px;
@@ -122,10 +122,12 @@ h1{
     text-align:start;
     margin-left: 0 auto;
     width: 100%;
+    min-width: 200px;
 }
 
 .notification{
     list-style:none;
+    padding: 1em;
 }
 
 .stats{
