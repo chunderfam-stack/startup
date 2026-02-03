@@ -93,7 +93,7 @@ footer{
     justify-self: start;
 }
 
-.stats-title{
+#stats-title{
     width: 20%;
     text-align: center;
     border-bottom:grey solid 3px;
