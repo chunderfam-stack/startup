@@ -1,4 +1,4 @@
-main{
+#main{
     display:flex;
     flex-direction: column;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -45,6 +45,12 @@ main{
     width:100%;
 }
 
+#timer{
+    justify-self: center; 
+    color:darkblue
+}
+
+
 .text-center{
     color:darkblue;
     justify-self: start;
@@ -74,6 +80,10 @@ main{
     border-radius: 10px;
 }
 
+#updatesLabel{
+    border-bottom: 2px grey solid;
+}
+
 .player-name{
     align-self: start;
     text-align:start;
@@ -93,6 +103,11 @@ main{
     grid-template-columns: 1fr 1fr 1fr;
 }
 
+#scores-label{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; 
+    font-size: 50px; 
+    margin-left: 30%;
+}
 
 table{
     border: solid black 2px;
@@ -113,5 +128,13 @@ td{
 .graph{
     justify-content: center;
     margin-left: 10px;
+}
+
+#placeholder{
+    fill:grey;
+}
+
+#averageTime{
+    margin-left: 5%;
 }
 

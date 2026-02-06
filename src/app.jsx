@@ -40,6 +40,6 @@ export default function App() {
 
 function NotFound(){
     return(<main className=''>
-        <p>It appears the page you are looking for does not exist.</p>
+        <p className='bg-yellow'>It appears the page you are looking for does not exist.</p>
     </main>)
 }

@@ -8,6 +8,12 @@
 - [Canvas](https://byu.instructure.com)
 - [MDN](https://developer.mozilla.org)
 
+<canvas>
+  id="myChart" style="width:100%;max-width:700px"
+</canvas>
+important code for later
+
+
 ## AWS
 
 My IP address is: 54.81.96.130
