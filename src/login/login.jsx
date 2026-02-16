@@ -1,24 +1,15 @@
 import React from 'react';
 
-import { authenticated } from './authenticated';
-import {unauthenticated } from './unauthenticated';
-import {authState} from './handleStates';
+import { Authenticated } from './authenticated';
+import {UnAuthenticated } from './unauthenticated';
+import {AuthState} from './handleStates';
 
-export function Login() {
+export function Login({userName, authState, onAuthChange}) {
   return (
     <main>
         <div class="bg-yellow">
-            <h1>Login to save your scores!</h1>
-            <form method="get" action="game">
-                <div>
-                    <input type="text" placeholder="your@email.com" />
-                </div>
-                <div>
-                    <input type="password" placeholder="password" />
-                </div>
-                <button type="submit">Login</button>
-                <button type="submit">Create</button>
-            </form>
+            {authState !== Unknown && <h1>Login to save your scores!</h1>}
+            {authState === Authenticated && (<Authenticated userName={userName} onLogOut={() => onAuthChange(userName, AuthState.UnAuthenticated)}/>)}
         </div>
     </main>
   );

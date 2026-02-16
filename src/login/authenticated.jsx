@@ -1,5 +1,3 @@
-
-
-export function authenticated(){
+export function Authenticated({userName, logOut}){
 
 }
