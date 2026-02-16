@@ -5,8 +5,12 @@ import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/login';
 import { Game } from './game/game';
 import { About } from './about/about';
+import { AuthState } from './login/handleStates';
 
 export default function App() {
+  const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
+  const currentAuthState = userName ? AuthState.Authenticated : AuthState.UnAuthenticated;
+  const [authState, setAuthState] = React.useState(currentAuthState);
   return ( 
     <BrowserRouter>
         <div className='body'>
