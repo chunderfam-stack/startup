@@ -2,15 +2,39 @@ import React from 'react';
 
 import Button from 'react-bootstrap/Button';
 
-export function UnAuthenticated(){
-    <form method="get" action="game">
-                <div>
-                    <input type="text" placeholder="your@email.com" />
-                </div>
-                <div>
-                    <input type="password" placeholder="password" />
-                </div>
-                <button type="submit">Login</button>
-                <button type="submit">Create</button>
-    </form>
-}
+
+
+
+export function UnAuthenticated(props){
+    const [userName, setUserName] = React.useState(props.username);
+    const [password, setPassword] = React.useState('');
+    const [displayError, setDisplayError] = React.useState();
+
+    async function createUser(){
+        localStorage.setItem('userName', userName);
+        props.onLogin(userName);
+    }
+    async function loginUser(){
+        localStorage.setItem('userName', userName);
+        props.onLogin(userName);
+    }
+
+    return(
+        <div>
+            <div className='input-group mb-3'>
+                <input className='form-control' type='text' onChange={(e) => setUserName(e.target.value)} value={username} placeholder="your@email.com"/>
+            </div>
+            <div className='input-group mb-3'>
+                <input className='form-control' type='text' onChange={(e) => setUserName(e.target.value)} value={username} />
+            </div>
+            <Button onClick={() => loginUser()} disabled={!userName || !password}>
+                Login
+            </Button>
+            <Button onClick={() => createUser()} disabled={!userName || !password}>
+                Create
+            </Button>
+        </div>
+        
+    );
+    
+} 
