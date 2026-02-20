@@ -9,12 +9,12 @@ export function Authenticated(props){
 
     function logout(){
         localStorage.removeItem('userName')
-        props.logOut()
+        props.onLogOut()
     }
 
     return(
         <div>
-            <div className='playerName'>{props.userName}</div>
+            <div className='playerName'>Welcome {props.userName}!</div>
             <Button onClick={() => navigate('/game')}>Play</Button>
             <Button onClick={() => logout()}>Logout</Button>
         </div>

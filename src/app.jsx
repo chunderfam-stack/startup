@@ -19,7 +19,7 @@ export default function App() {
                     <h1 className="navbar-brand" href="#">Reactionary</h1>
                     <menu className="navbar-nav">
                         <li className="nav-item"><NavLink className='nav-link' to=''>Login</NavLink></li>
-                        <li className="nav-item"><NavLink className='nav-link' to='game'>Play</NavLink></li>
+                        {authState == AuthState.Authenticated && (<li className="nav-item"><NavLink className='nav-link' to='game'>Play</NavLink></li>)}
                         <li className="nav-item"><NavLink className='nav-link' to='about'>About</NavLink></li>
                     </menu>
                 </nav>
