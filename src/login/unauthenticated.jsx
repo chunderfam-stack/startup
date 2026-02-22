@@ -35,7 +35,7 @@ export function UnAuthenticated(props){
                     Create
                 </Button>
             </div>
-            <MessageDialog message={displayError} onHide={() => setDisplayError(null)} />
+            
         </>
     );
     
