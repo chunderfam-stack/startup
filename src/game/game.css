@@ -32,6 +32,11 @@
     background: green;
 }
 
+.button-text{
+    color:white;
+    transform: translateY(10px);
+}
+
 
 .switch{
     margin-left: 1%;
