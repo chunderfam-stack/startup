@@ -1,17 +1,21 @@
 import React from 'react';
 import './game.css';
-
+import { Duck } from './duck';
 
 export function PlayArea(){
     const [timer, setTimer] = React.useState(0);
     const [inPlay, setPlay] = React.useState(false);
-    const [startGame, setGame] = React.useState(false);
+    const [gameStarted, setGame] = React.useState(false);
     const [duckMode, setDuckMode] = React.useState(false);
+    const [highScore, setHighScore] = React.useState(localStorage.getItem('highScore') || 0);
+    const [gameTimeOut, setGameTimeOut] = React.useState(null);
     function startPlay(){
+        setTimer(0);
         setPlay(true);
     }
     function readyGame(){
-        setTimeout(() => startPlay(), Math.random() * 3000 + 500);
+        setGame(true);
+        setGameTimeOut(setTimeout(() => startPlay(), Math.random() * 4000 + 500));
     }
     React.useEffect(() => {
         if(!inPlay){
@@ -20,7 +24,7 @@ export function PlayArea(){
         const start = performance.now();
             const interval = setInterval(() =>{
             const now = performance.now();
-            setTimer(((now - start)).toFixed(1))
+            setTimer((now - start).toFixed(1))
         }, 10);
         return () => clearInterval(interval);
         
@@ -28,15 +32,27 @@ export function PlayArea(){
     function StartDuckMode(){
         setDuckMode(!duckMode);
     }
+    function stopGame(){
+        setGame(false);
+        setPlay(false);
+        if(Number(timer) < Number(highScore) || Number(highScore) === 0) {
+            setHighScore(timer);
+            localStorage.setItem('highScore', timer);
+        }
+    }
+    function doNothing(){
+        clearTimeout(gameTimeOut);
+        setGame(false);
+    }
 
     return (
         <>
             <div className="play-area">
-            {duckMode === true && <img src="../duck-placeholder.jpg" height="100" width="100"/>}
-                <button className="click-button" onClick={() => readyGame()}>
-                    {inPlay === false && (<p className='button-text'>Click to Play!</p>)}
+            {duckMode === true && <Duck left={1}/>}
+                <button className={gameStarted ? inPlay ? "click-button" : "button-red" : "button-blue"} onClick={inPlay ? () => stopGame() : gameStarted ? () => doNothing() : () => readyGame()}>
+                    {gameStarted === false && (<p className='button-text'>Click to Play!</p>)}
                 </button>
-            {duckMode === true && <img src="../duck-placeholder.jpg" height="100" width="100"/>}
+            {duckMode === true && <Duck left={-1}/>}
             </div>
 
             <div className="below-play">
@@ -47,6 +63,7 @@ export function PlayArea(){
                     </label>
                 </div>
                 <p id='timer'>{timer}ms</p>
+                {highScore !== 0 && <p id='timer'>High Score: {highScore}ms</p>}
             </div>  
         </>
         
