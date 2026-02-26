@@ -21,7 +21,7 @@ ChartJS.register(CategoryScale,
     Legend, 
 );
 
-export function Statistics(){
+export function Statistics(props){
     return(
         <>
      <h1 className="stats-title">Statistics</h1>
@@ -29,7 +29,7 @@ export function Statistics(){
         <div className="stats">
             <div className="graph">
                 <Line data={Data} options={Options}/>
-                <p id='averageTime'>Average Reaction Time: 0.5675ms</p>
+                <p id='averageTime'>Average Reaction Time: 345ms</p>
             </div>
             <div className="updates">
                 <p id='updatesLabel'>updates:</p>
