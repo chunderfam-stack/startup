@@ -58,20 +58,20 @@ export function PlayArea(props){
             const scores = [...prevScores];
             let found = false;
             for(const [i, prevScore] of scores.entries()){
-                if(newScore.name == prevScore.name){
-                    if(Number(newScore.score) < Number(prevScore.score)){
+                if(Number(newScore.score) < Number(prevScore.score)){
                         scores.splice(i, 0, newScore);
                         found = true;
                         break;
-                    }
                 }
             }
             if(!found){
                 scores.push(newScore);
             } 
-            const newScores = scores.slice(0, 5).sort((a, b) => Number(a.score) - Number(b.score));
-            localStorage.setItem('scores', JSON.stringify(newScores));
-            return newScores;
+            if(scores.length > 5){
+                scores.length = 5;
+            }
+            localStorage.setItem('scores', JSON.stringify(scores));
+            return scores;
         });
         
     }
