@@ -116,12 +116,15 @@
 .notification{
     list-style:none;
     padding: 1em;
+    transform: translateY(-30px);
 }
 
 .stats{
     width:100%;
     display:grid;
     grid-template-columns: 1fr 1fr 1fr;
+    padding: 5em;
+    
 }
 
 #scores-label{
@@ -148,7 +151,11 @@ td{
 
 .graph{
     justify-content: center;
-    margin-left: 10px;
+    text-align: center;
+    background: #EEEEE4;
+}
+
+.lineGraph{
 }
 
 #placeholder{
