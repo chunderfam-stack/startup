@@ -120,8 +120,8 @@
 }
 
 .stats{
-    width:100%;
-    min-width: 0px;
+    width: 100%;
+    max-width: 100%;
     display:grid;
     grid-template-columns: 1fr 1fr 1fr;
     padding: 5em;
