@@ -18,6 +18,7 @@ export function PlayArea(props){
     function readyGame(){
         setGame(true);
         setGameTimeOut(setTimeout(() => startPlay(), Math.random() * 4000 + 500));
+        props.callEvent({type: "start", time: timer, userName: props.userName});
     }
 
     React.useEffect(() => {
@@ -41,6 +42,7 @@ export function PlayArea(props){
         setGame(false);
         setPlay(false);
         updateScores({name: userName.current, score: timer});
+        props.callEvent({type: "time", time: timer, userName: props.userName});
         if(Number(timer) < Number(highScore) || Number(highScore) === 0) {
             setHighScore(timer);
             localStorage.setItem('highScore', timer);
@@ -75,6 +77,8 @@ export function PlayArea(props){
         });
         
     }
+
+    
 
     return (
         <>

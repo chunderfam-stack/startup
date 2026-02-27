@@ -96,9 +96,8 @@
     justify-self: center;
     background:#EBE1C3;
     align-items: start;
-    padding: 0;
-    height: 30%;
     border-radius: 10px;
+    
 }
 
 #updatesLabel{
@@ -111,20 +110,22 @@
     margin-left: 0 auto;
     width: 100%;
     min-width: 200px;
+    font-weight: bold;
+    border-bottom: 1px grey solid;
+    padding: 1em;
 }
 
 .notification{
     list-style:none;
     padding: 1em;
-    transform: translateY(-30px);
 }
 
 .stats{
-    width: 100%;
+    width: 100% !important;
     max-width: 100%;
     display:grid;
     grid-template-columns: 1fr 1fr 1fr;
-    padding: 5em;
+    padding: 1em;
     
 }
 
@@ -154,6 +155,7 @@ td{
     justify-content: center;
     text-align: center;
     background: #EEEEE4;
+    width: 30vw;
 }
 
 .lineGraph{

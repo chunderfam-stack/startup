@@ -22,15 +22,10 @@ ChartJS.register(CategoryScale,
 );
 
 export function Statistics(props){
-    const scores = React.useRef(props.scores);
-    React.useEffect(() =>{
-        console.log("yes?");
-    }, [props.scores]);
 
     return(
-        <>
+    <>
      <h1 className="stats-title">Statistics</h1>
-        <p></p>
         <div className="stats">
             <div className="graph">
                 <Line data={Data} options={Options}/>
@@ -39,9 +34,9 @@ export function Statistics(props){
             <div className="updates">
                 <p id='updatesLabel'>updates:</p>
                 <ul className="notification">
-                    <li className="player-name">Grace got a time of 500ms</li>
-                    <li className="player-name">Alan got a time of 900ms</li>
-                    <li className="player-name">Barry got a time of 8018ms</li>
+                    {props.eventsList.map((callout, i) => (
+                        <li className='player-name' key={i}>{callout}</li>
+                    ))}
                 </ul>   
             </div>
             <div className="playerData">
