@@ -5,7 +5,10 @@ export function Duck(props){
     const [x, setX] = React.useState(0);
     const [rot, setRot] = React.useState(0);
     const left = React.useRef(props.left);
+    const duckTypes = ["../duck-placeholder.jpg", "../duck-placeholder2.jpg", "../duck-placeholder3.jpg"]
+    const [myDuck, setMyDuck] = React.useState(duckTypes[0]);
     React.useEffect(() => {
+        setMyDuck(duckTypes[Math.floor(Math.random() * duckTypes.length)])
         const interval = setInterval(() =>{
             setX(prevX => {
                 if(props.left == 1){
@@ -24,7 +27,7 @@ export function Duck(props){
         return () => clearInterval(interval);      
     }, [left]);
     return(
-        <img src="../duck-placeholder.jpg" height="100" width="100" style={{
+        <img src={myDuck} height="100" width="100" style={{
             transform: `translateX(${x}vw) rotate(${x}deg)`,
             transition: 'transform 0.3s ease'
         }}/>
