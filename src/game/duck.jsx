@@ -8,7 +8,12 @@ export function Duck(props){
     const duckTypes = ["../duck-placeholder.jpg", "../duck-placeholder2.jpg", "../duck-placeholder3.jpg"]
     const [myDuck, setMyDuck] = React.useState(duckTypes[0]);
     React.useEffect(() => {
-        setMyDuck(duckTypes[Math.floor(Math.random() * duckTypes.length)])
+        fetch("https://random-d.uk/api/random")
+        .then((x) => x.json())
+        .then((response) => {
+            setMyDuck(response.url);
+            console.log(response.url);
+        });
         const interval = setInterval(() =>{
             setX(prevX => {
                 if(props.left == 1){
