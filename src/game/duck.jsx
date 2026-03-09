@@ -8,7 +8,7 @@ export function Duck(props){
     const duckTypes = ["../duck-placeholder.jpg", "../duck-placeholder2.jpg", "../duck-placeholder3.jpg"]
     const [myDuck, setMyDuck] = React.useState(duckTypes[0]);
     React.useEffect(() => {
-        fetch("https://random-d.uk/api/random")
+        fetch("/api/duck")
         .then((x) => x.json())
         .then((response) => {
             setMyDuck(response.url);

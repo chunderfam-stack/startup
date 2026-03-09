@@ -50,6 +50,12 @@ apiRouter.delete('auth/logout', async (req, res) => {
     res.status(204).end();
 });
 
+apiRouter.get('/duck', async (req, res) => {
+    const r = await fetch("https://random-d.uk/api/random");
+    const data = await r.json();
+    res.json(data);
+});
+
 const verifyAuth = async (req, res, next) => {
     const user = await findUser('token', req.cookies[authCookieName]);
     if(user){
