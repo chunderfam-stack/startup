@@ -36,6 +36,27 @@ async function findUser(field, value){
     return users.find((u) => u[field] === value);
 }
 
+async function createUser(username, password){
+    const passwordHash = await bcrypt.hash(password, 10);
+
+    const user = {
+        username: username,
+        password: passwordHash,
+        token: uuid.v4(),
+    };
+    users.push(user);
+    return user;
+}
+
+function setAuthCookie(res, authToken){
+    res.cookie(authCookieName, authToken, {
+        maxAge: 1000 * 60 * 60  * 24 * 365,
+        secure: true,
+        httpOnly: true,
+        sameSite: 'strict',
+    });
+}
+
 app.listen(port, () => {
     console.log("Listening on port 8000");
 });
