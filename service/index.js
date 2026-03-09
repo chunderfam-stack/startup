@@ -19,7 +19,13 @@ var apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
 apiRouter.post('/auth/create', async (req, res) => {
-
+    if(await findUser('username', req.body.username)){
+        res.status(409).send({msg : "Existing User"});
+    } else{
+        const user =  await createUser(req.body.username, req.body.password);
+        setAuthCookie(res, user.token);
+        res.send({username : user.username});
+    }
 });
 
 const verifyAuth = async (req, res, next) => {
