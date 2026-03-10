@@ -85,6 +85,14 @@ function setAuthCookie(res, authToken){
     });
 }
 
+app.use((_req, res) => {
+    res.sendFile('index.html', {root: "public"});
+});
+
+app.use((err, req, res, next) => {
+    res.status(500).send({type : err.name, message : err.message});
+});
+
 app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });
