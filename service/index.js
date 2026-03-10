@@ -52,8 +52,8 @@ apiRouter.delete('auth/logout', async (req, res) => {
 
 apiRouter.get('/duck', async (req, res) => {
     const r = await fetch("https://random-d.uk/api/random");
-    const data = await r.json();
-    res.json(data);
+    const text = await r.json();
+    console.log(text);
 });
 
 const verifyAuth = async (req, res, next) => {
@@ -92,5 +92,5 @@ function setAuthCookie(res, authToken){
 }
 
 app.listen(port, () => {
-    console.log("Listening on port 8000");
+    console.log(`Listening on port ${port}`);
 });
