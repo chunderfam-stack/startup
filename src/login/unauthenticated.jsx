@@ -22,7 +22,7 @@ export function UnAuthenticated(props){
             method: 'post',
             body: JSON.stringify({username : userName, password : password}),
             headers: {
-                'Content-type': 'application/json; charset=UTF 8', 
+                'Content-Type': 'application/json; charset=UTF 8', 
             },
         });
         if(response?.status == 200){
