@@ -38,7 +38,7 @@ apiRouter.post('/auth/login', async (req, res) => {
             return;
         }
     }
-    res.status(401).send({msg : "User does not exist"});
+    res.status(401).send({msg : "Unauthorized"});
 });
 
 apiRouter.delete('/auth/logout', async (req, res) => {
