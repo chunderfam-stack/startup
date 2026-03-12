@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.static('public'));
 
-var apiRouter = express.Router();
+const apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
 apiRouter.post('/auth/create', async (req, res) => {
@@ -41,8 +41,8 @@ apiRouter.post('/auth/login', async (req, res) => {
     res.status(401).send({msg : "User does not exist"});
 });
 
-apiRouter.delete('auth/logout', async (req, res) => {
-    const user = await findUser('username', req.body.username);
+apiRouter.delete('/auth/logout', async (req, res) => {
+    const user = await findUser('username', req.cookies[authCookieName]);
     if(user){
         delete user.token;
     }

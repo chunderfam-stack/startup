@@ -8,10 +8,12 @@ export function Authenticated(props){
     const navigate = useNavigate();
 
     function logout(){
-        fetch(`api/auth/logout`, {
-            method: "delete",
+        fetch(`/api/auth/logout`, {
+            method: 'delete',
         })
-            .catch(() => {})
+            .catch(() => {
+
+            })
             .finally(() => {
                 localStorage.removeItem('userName');
                 localStorage.removeItem('highScore');

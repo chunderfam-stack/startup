@@ -11,10 +11,10 @@ export function UnAuthenticated(props){
     const [displayError, setDisplayError] = React.useState();
 
     async function createUser(){
-        loginOrCreate(`api/auth/login`);
+        loginOrCreate(`/api/auth/create`);
     }
     async function loginUser(){
-        loginOrCreate(`api/auth/create`);
+        loginOrCreate(`/api/auth/login`);
     }
 
     async function loginOrCreate(endpoint){
@@ -22,7 +22,7 @@ export function UnAuthenticated(props){
             method: 'post',
             body: JSON.stringify({username : userName, password : password}),
             headers: {
-                'Content-Type': 'application/json; charset=UTF 8', 
+                'Content-Type': 'application/json; charset=UTF-8', 
             },
         });
         if(response?.status == 200){
