@@ -28,8 +28,8 @@ export function Statistics(props){
      <h1 className="stats-title">Statistics</h1>
         <div className="stats">
             <div className="graph">
-                <Line data={Data} options={Options}/>
-                <p id='averageTime'>Average Reaction Time: 345ms</p>
+                <Line data={props.Data} options={Options}/>
+                <p id='averageTime'>Average Reaction Time: {props.averageTime.toFixed(1)}ms</p>
             </div>
             <div className="updates">
                 <p id='updatesLabel'>updates:</p>

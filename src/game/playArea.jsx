@@ -59,7 +59,8 @@ export function PlayArea(props){
         .then((scores) => {
             props.setScores(scores.scores);
             props.setHighScore(scores.highScore);
-
+            props.setYValues(scores.yValues);
+            props.setAverageTime(scores.average);
         });
     }
     return (

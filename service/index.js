@@ -10,6 +10,8 @@ let users = [];
 let scores = [];
 let graphX = [];
 let graphY = [];
+let average = 0;
+let averageCount = 0;
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
@@ -91,22 +93,31 @@ function setAuthCookie(res, authToken){
 //Scores
 apiRouter.get('/scores', verifyAuth, async (req, res) => {
     const user = await findUser('token', req.cookies[authCookieName]);
+    if(graphY.length == 0){
+        for(let x = 0; x < 500; x += 10){
+            graphY.push(0);
+        }
+    }
     res.json({
         scores: scores,
         yValues: graphY,
         highScore: user.highScore,
+        average: average / averageCount,
     });
 });
 
 apiRouter.post('/score', verifyAuth, async (req, res) => {
     const user = await findUser('token', req.cookies[authCookieName]);
     if(Number(req.body.score) < Number(user.highScore) || Number(user.highScore) === 0) user.highScore = req.body.score;
+    average += Number(req.body.score);
+    averageCount += 1;
     scores = updateScores(req.body);
     graphY = updateGraph(req.body.score);
     res.json({
         scores: scores,
         yValues: graphY,
         highScore: user.highScore,
+        average: average / averageCount,
     });
 });
 
@@ -116,11 +127,14 @@ function updateGraph(newScore){
             graphY.push(0);
         }
     }
-    let position = Math.round(newScore / 10);
-    if(newScore > 50) return graphY;
+    const position = Math.round(newScore / 10);
+    if(position > 50) return graphY;
     const newY = [...graphY];
     newY[position] += 1;
-    return newY;
+    console.log(graphY[position]);
+    console.log(newY[position]);
+    graphY = newY;
+    return graphY;
 
 }
 

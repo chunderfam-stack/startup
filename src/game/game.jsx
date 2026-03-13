@@ -3,6 +3,7 @@ import './game.css';
 
 import {PlayArea} from './playArea';
 import {Statistics} from './statistics';
+import { data } from 'react-router-dom';
 
 export function Game(props) {
   const [scores, setScores] = React.useState([]);
@@ -10,7 +11,8 @@ export function Game(props) {
   const [highScore, setHighScore] = React.useState([]);
 
   const [yValues, setYValues] = React.useState([]);
-  const xValues = [];
+  const [xValues, setXValues] = React.useState([]);
+  const [averageTime, setAverageTime] = React.useState(0);
   const types = ['time', 'start'];
   const names = ['Bob', 'Alan', 'Grace', 'Ducks4Life', 'Timmy Tommygun', 'Santa', 'Character Limit Test']
 
@@ -35,10 +37,13 @@ export function Game(props) {
         setScores(scores.scores);
         setHighScore(scores.highScore);
         setYValues(scores.yValues);
+        setAverageTime(scores.average);
       });
+    const xs = []
     for(let x = 0; x < 500; x += 10){
-        xValues.push(x);
+        xs.push(x);
     }
+    setXValues(xs);
     const interval = setInterval(() =>{
       callEvent({type: types[Math.floor(Math.random() * 2)], time: (Math.random() * 500 + 100).toFixed(1), userName: names[Math.floor(Math.random() * names.length)]});
     }, 2000);
@@ -72,12 +77,15 @@ export function Game(props) {
         callEvent={callEvent}
         highScore={highScore}
         setHighScore={setHighScore}
+        setYValues={setYValues}
+        setAverageTime={setAverageTime}
         />
         <Statistics 
         userName={props.userName}
         scores={scores}
         eventsList={eventsList}
-        
+        Data={Data}
+        averageTime={averageTime}
         />
     </main>
   );
