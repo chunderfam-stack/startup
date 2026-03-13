@@ -90,6 +90,7 @@ function setAuthCookie(res, authToken){
 
 //Scores
 apiRouter.get('/scores', verifyAuth, async (req, res) => {
+    const user = await findUser('token', req.cookies[authCookieName]);
     res.json({
         scores: scores,
         yValues: graphY,

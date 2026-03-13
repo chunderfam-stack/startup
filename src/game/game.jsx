@@ -8,6 +8,7 @@ export function Game(props) {
   const [scores, setScores] = React.useState([]);
   const [eventsList, setEventsList] = React.useState([]);
   const [highScore, setHighScore] = React.useState([]);
+
   const [yValues, setYValues] = React.useState([]);
   const xValues = [];
   const types = ['time', 'start'];
@@ -28,15 +29,16 @@ export function Game(props) {
 
 
   React.useEffect(() => {
-    for(let x = 0; x < 500; x += 10){
-            graphY.push(0);
-    }
     fetch('/api/scores')
       .then((response) => response.json())
       .then((scores) => {
         setScores(scores.scores);
         setHighScore(scores.highScore);
+        setYValues(scores.yValues);
       });
+    for(let x = 0; x < 500; x += 10){
+        xValues.push(x);
+    }
     const interval = setInterval(() =>{
       callEvent({type: types[Math.floor(Math.random() * 2)], time: (Math.random() * 500 + 100).toFixed(1), userName: names[Math.floor(Math.random() * names.length)]});
     }, 2000);
@@ -75,7 +77,7 @@ export function Game(props) {
         userName={props.userName}
         scores={scores}
         eventsList={eventsList}
-        Data={Data}
+        
         />
     </main>
   );
