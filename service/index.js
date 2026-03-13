@@ -8,6 +8,8 @@ const authCookieName ='token';
 
 let users = [];
 let scores = [];
+let graphX = [];
+let graphY = [];
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
@@ -71,6 +73,7 @@ async function createUser(username, password){
         username: username,
         password: passwordHash,
         token: uuid.v4(),
+        highScore: 0,
     };
     users.push(user);
     return user;
@@ -83,6 +86,60 @@ function setAuthCookie(res, authToken){
         httpOnly: true,
         sameSite: 'strict',
     });
+}
+
+//Scores
+apiRouter.get('/scores', verifyAuth, async (req, res) => {
+    res.json({
+        scores: scores,
+        yValues: graphY,
+        highScore: user.highScore,
+    });
+});
+
+apiRouter.post('/score', verifyAuth, async (req, res) => {
+    const user = await findUser('token', req.cookies[authCookieName]);
+    if(Number(req.body.score) < Number(user.highScore) || Number(user.highScore) === 0) user.highScore = req.body.score;
+    scores = updateScores(req.body);
+    graphY = updateGraph(req.body.score);
+    res.json({
+        scores: scores,
+        yValues: graphY,
+        highScore: user.highScore,
+    });
+});
+
+function updateGraph(newScore){
+    if(graphY.length == 0){
+        for(let x = 0; x < 500; x += 10){
+            graphY.push(0);
+        }
+    }
+    let position = Math.round(newScore / 10);
+    if(newScore > 50) return graphY;
+    const newY = [...graphY];
+    newY[position] += 1;
+    return newY;
+
+}
+
+function updateScores(newScore){
+    const newScores = [...scores];
+    let found = false;
+    for(const [i, prevScore] of newScores.entries()){
+        if(Number(newScore.score) < Number(prevScore.score)){
+            newScores.splice(i, 0, newScore);
+            found = true;
+            break;
+        }
+    }
+    if(!found){
+        newScores.push(newScore);
+    } 
+    if(newScores.length > 5){
+        newScores.length = 5;
+    }
+    return newScores;
 }
 
 app.use((_req, res) => {

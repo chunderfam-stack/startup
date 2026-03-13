@@ -7,7 +7,6 @@ export function PlayArea(props){
     const [inPlay, setPlay] = React.useState(false);
     const [gameStarted, setGame] = React.useState(false);
     const [duckMode, setDuckMode] = React.useState(false);
-    const [highScore, setHighScore] = React.useState(localStorage.getItem('highScore') || 0);
     const [gameTimeOut, setGameTimeOut] = React.useState(null);
     const userName = React.useRef(props.userName);
     function startPlay(){
@@ -43,10 +42,6 @@ export function PlayArea(props){
         setPlay(false);
         updateScores({name: userName.current, score: timer});
         props.callEvent({type: "time", time: timer, userName: props.userName});
-        if(Number(timer) < Number(highScore) || Number(highScore) === 0) {
-            setHighScore(timer);
-            localStorage.setItem('highScore', timer);
-        }
     }
 
     function doNothing(){
@@ -54,32 +49,19 @@ export function PlayArea(props){
         setGame(false);
     }
 
-    function updateScores(newScore){
-        
-        props.setScores(prevScores => {
-            const scores = [...prevScores];
-            let found = false;
-            for(const [i, prevScore] of scores.entries()){
-                if(Number(newScore.score) < Number(prevScore.score)){
-                        scores.splice(i, 0, newScore);
-                        found = true;
-                        break;
-                }
-            }
-            if(!found){
-                scores.push(newScore);
-            } 
-            if(scores.length > 5){
-                scores.length = 5;
-            }
-            localStorage.setItem('scores', JSON.stringify(scores));
-            return scores;
+    async function updateScores(newScore){
+        fetch('/api/score', {
+                method: 'POST',
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify(newScore),
+        })
+        .then((response) => response.json())
+        .then((scores) => {
+            props.setScores(scores.scores);
+            props.setHighScore(scores.highScore);
+
         });
-        
     }
-
-    
-
     return (
         <>
             <div className="play-area">
@@ -98,7 +80,7 @@ export function PlayArea(props){
                     </label>
                 </div>
                 <p id='timer'>{timer}ms</p>
-                {highScore !== 0 && <p id='timer'>High Score: {highScore}ms</p>}
+                {props.highScore !== 0 && <p id='timer'>High Score: {props.highScore}ms</p>}
             </div>  
         </>
         

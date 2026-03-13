@@ -7,14 +7,36 @@ import {Statistics} from './statistics';
 export function Game(props) {
   const [scores, setScores] = React.useState([]);
   const [eventsList, setEventsList] = React.useState([]);
-
+  const [highScore, setHighScore] = React.useState([]);
+  const [yValues, setYValues] = React.useState([]);
+  const xValues = [];
   const types = ['time', 'start'];
   const names = ['Bob', 'Alan', 'Grace', 'Ducks4Life', 'Timmy Tommygun', 'Santa', 'Character Limit Test']
-  React.useEffect(() => {
-    const scoresText = localStorage.getItem('scores');
-    if (scoresText) {
-      setScores(JSON.parse(scoresText));
+
+  const Data = {
+    labels: xValues,
+    datasets: [{
+        label: "Recorded Data",
+        data: yValues,
+        borderColor: "blue",
+        borderWidth: 2,
+        fill: false,
+        tension: 0.2
     }
+    ]
+  };
+
+
+  React.useEffect(() => {
+    for(let x = 0; x < 500; x += 10){
+            graphY.push(0);
+    }
+    fetch('/api/scores')
+      .then((response) => response.json())
+      .then((scores) => {
+        setScores(scores.scores);
+        setHighScore(scores.highScore);
+      });
     const interval = setInterval(() =>{
       callEvent({type: types[Math.floor(Math.random() * 2)], time: (Math.random() * 500 + 100).toFixed(1), userName: names[Math.floor(Math.random() * names.length)]});
     }, 2000);
@@ -46,11 +68,14 @@ export function Game(props) {
         scores={scores}
         setScores={setScores}
         callEvent={callEvent}
+        highScore={highScore}
+        setHighScore={setHighScore}
         />
         <Statistics 
         userName={props.userName}
         scores={scores}
         eventsList={eventsList}
+        Data={Data}
         />
     </main>
   );
