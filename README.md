@@ -115,11 +115,11 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
 - [x] **Node.js/Express HTTP service** - Installed express using npm. Uses port 4000.
-- [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
+- [x] **Static middleware for frontend** - endpoints in service
 - [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
-- [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
-- [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
-- [x] **Supports registration, login, logout, and restricted endpoint** - Utilizes
+- [x] **Backend service endpoints** - endpoints for auth and scores. The scores endpoint has a bit of middleware to update 4 different systems at once.
+- [x] **Frontend calls service endpoints** - Frontend calls for scores on button click and on game open. Frontend calls for authorization on page open and login.
+- [x] **Supports registration, login, logout, and restricted endpoint** - Scores are restricted and game page is inaccessible without authentication.
 
 ## 🚀 DB deliverable
 
