@@ -116,7 +116,7 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 - [x] **Node.js/Express HTTP service** - Installed express using npm. Uses port 4000.
 - [x] **Static middleware for frontend** - endpoints in service
-- [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
+- [ ] **Calls to third party endpoints** - My duck image is from a third party but it is not a fetch request, meaning that I did not complete this part of the deliverable.
 - [x] **Backend service endpoints** - endpoints for auth and scores. The scores endpoint has a bit of middleware to update 4 different systems at once.
 - [x] **Frontend calls service endpoints** - Frontend calls for scores on button click and on game open. Frontend calls for authorization on page open and login.
 - [x] **Supports registration, login, logout, and restricted endpoint** - Scores are restricted and game page is inaccessible without authentication.
