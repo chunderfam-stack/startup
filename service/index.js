@@ -10,8 +10,8 @@ let users = [];
 let scores = [];
 let graphX = [];
 let graphY = [];
-let average = 0;
-let averageCount = 0;
+let average = 1;
+let averageCount = 1;
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
@@ -109,6 +109,7 @@ apiRouter.get('/scores', verifyAuth, async (req, res) => {
 apiRouter.post('/score', verifyAuth, async (req, res) => {
     const user = await findUser('token', req.cookies[authCookieName]);
     if(Number(req.body.score) < Number(user.highScore) || Number(user.highScore) === 0) user.highScore = req.body.score;
+    if(average === 1) {average = 0; averageCount = 0;}
     average += Number(req.body.score);
     averageCount += 1;
     scores = updateScores(req.body);
