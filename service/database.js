@@ -58,5 +58,6 @@ module.exports = {
     updateUser,
     getScores,
     updateScoreLists,
-    updateUserRemoveAuth
+    updateUserRemoveAuth,
+    getUserByToken
 };

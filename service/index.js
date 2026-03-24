@@ -4,6 +4,7 @@ const express = require('express');
 const uuid = require('uuid');
 const app = express();
 const DB = require('./database.js');
+const { Db } = require('mongodb');
 
 const authCookieName ='token';
 
@@ -40,6 +41,7 @@ apiRouter.post('/auth/login', async (req, res) => {
     if(user){
         if (await bcrypt.compare(req.body.password, user.password)){
             user.token = uuid.v4();
+            await DB.updateUser(user);
             setAuthCookie(res, user.token);
             res.send({username : user.username});
             return;
@@ -51,7 +53,7 @@ apiRouter.post('/auth/login', async (req, res) => {
 apiRouter.delete('/auth/logout', async (req, res) => {
     const user = await findUser('username', req.cookies[authCookieName]);
     if(user){
-        delete user.token;
+        await DB.updateUserRemoveAuth(user);
     }
     res.clearCookie(authCookieName);
     res.status(204).end();
@@ -68,7 +70,10 @@ const verifyAuth = async (req, res, next) => {
 
 async function findUser(field, value){
     if(!value) return null;
-    return users.find((u) => u[field] === value);
+    if(field === 'token'){
+        return DB.getUserByToken(value)
+    }
+    return DB.getUser(value);
 }
 
 async function createUser(username, password){
@@ -80,7 +85,7 @@ async function createUser(username, password){
         token: uuid.v4(),
         highScore: 0,
     };
-    users.push(user);
+    await DB.addUser(user);
     return user;
 }
 
