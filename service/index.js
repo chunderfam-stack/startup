@@ -3,12 +3,12 @@ const bcrypt = require('bcryptjs');
 const express = require('express');
 const uuid = require('uuid');
 const app = express();
+const DB = require('./database.js');
 
 const authCookieName ='token';
 
 let users = [];
 let scores = [];
-let graphX = [];
 let graphY = [];
 let average = 1;
 let averageCount = 1;
@@ -21,6 +21,9 @@ app.use(express.static('public'));
 
 const apiRouter = express.Router();
 app.use(`/api`, apiRouter);
+
+
+
 
 apiRouter.post('/auth/create', async (req, res) => {
     if(await findUser('username', req.body.username)){
