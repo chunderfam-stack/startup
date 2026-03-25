@@ -11,7 +11,7 @@ const scoresCollection = db.collection('scoresCollection');
   try {
     await db.command({ ping: 1 });
     console.log(`DB connected to ${config.hostname}.`);
-    addScoreLists({name: "scores", scores: [], graphY: []});
+    addScoreLists({name: "scores", scores: [], graphY: [], average: 300, averageCount: 1});
   } catch (ex) {
     console.log(`Unable to connect to database with ${url} because ${ex.message}`);
     process.exit(1);
@@ -51,6 +51,14 @@ async function updateScoreLists(scores){
     await scoresCollection.updateOne({name: "scores"}, {$set: scores});
 }
 
+async function updateOneScoreTag(name, value){
+    await scoresCollection.updateOne({name: "scores"}, {$set: {[name]: value}});
+}
+
+async function updateSpecificPlayerTag(user, name, value){
+    await userCollection.updateOne({username: user.username}, {$set: {[name]: value}});
+}
+
 module.exports = {
     getUser,
     addUser,
@@ -58,5 +66,7 @@ module.exports = {
     getScores,
     updateScoreLists,
     updateUserRemoveAuth,
-    getUserByToken
+    getUserByToken,
+    updateOneScoreTag,
+    updateSpecificPlayerTag
 };

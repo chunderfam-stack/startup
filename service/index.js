@@ -8,12 +8,6 @@ const { Db } = require('mongodb');
 
 const authCookieName ='token';
 
-let users = [];
-let scores = [];
-let graphY = [];
-let average = 1;
-let averageCount = 1;
-
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
 app.use(express.json());
@@ -101,36 +95,50 @@ function setAuthCookie(res, authToken){
 //Scores
 apiRouter.get('/scores', verifyAuth, async (req, res) => {
     const user = await findUser('token', req.cookies[authCookieName]);
-    if(graphY.length == 0){
+    const scoresJSON = await DB.getScores();
+    if(scoresJSON.graphY.length == 0){
+        let newGraph = []
         for(let x = 0; x < 500; x += 10){
-            graphY.push(0);
+            newGraph.push(0);
         }
+        await DB.updateOneScoreTag("graphY", newGraph);
     }
     res.json({
-        scores: scores,
-        yValues: graphY,
+        scores: scoresJSON.scores,
+        yValues: scoresJSON.graphY,
         highScore: user.highScore,
-        average: average / averageCount,
+        average: scoresJSON.average / scoresJSON.averageCount,
     });
 });
 
 apiRouter.post('/score', verifyAuth, async (req, res) => {
     const user = await findUser('token', req.cookies[authCookieName]);
-    if(Number(req.body.score) < Number(user.highScore) || Number(user.highScore) === 0) user.highScore = req.body.score;
-    if(average === 1) {average = 0; averageCount = 0;}
-    average += Number(req.body.score);
-    averageCount += 1;
-    scores = updateScores(req.body);
-    graphY = updateGraph(req.body.score);
+    const scoresJSON = await DB.getScores();
+    let highScore = user.highScore;
+    if(Number(req.body.score) < Number(user.highScore) || Number(user.highScore) === 0) {
+        highScore = req.body.score;
+        await DB.updateSpecificPlayerTag(user.username, "highScore", highScore);
+    }
+    let scores = updateScores(req.body, scoresJSON.scores);
+    let graphY =  updateGraph(req.body.score, scoresJSON.graphY);
+    let average = scoresJSON.average + Number(req.body.score);
+    let averageCount = scoresJSON.averageCount + 1;
+    await DB.updateScoreLists({
+        name: "scores",
+        scores: scores,
+        graphY: graphY,
+        average:  average,
+        averageCount:  averageCount,
+    });
     res.json({
         scores: scores,
         yValues: graphY,
-        highScore: user.highScore,
-        average: average / averageCount,
+        highScore: highScore,
+        average: averageCount,
     });
 });
 
-function updateGraph(newScore){
+function updateGraph(newScore, graphY){
     if(graphY.length == 0){
         for(let x = 0; x < 500; x += 10){
             graphY.push(0);
@@ -140,14 +148,10 @@ function updateGraph(newScore){
     if(position > 50) return graphY;
     const newY = [...graphY];
     newY[position] += 1;
-    console.log(graphY[position]);
-    console.log(newY[position]);
-    graphY = newY;
-    return graphY;
-
+    return newY;
 }
 
-function updateScores(newScore){
+function updateScores(newScore, scores){
     const newScores = [...scores];
     let found = false;
     for(const [i, prevScore] of newScores.entries()){
