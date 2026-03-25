@@ -117,7 +117,8 @@ apiRouter.post('/score', verifyAuth, async (req, res) => {
     let highScore = user.highScore;
     if(Number(req.body.score) < Number(user.highScore) || Number(user.highScore) === 0) {
         highScore = req.body.score;
-        await DB.updateSpecificPlayerTag(user.username, "highScore", highScore);
+        user.highScore = highScore;
+        await DB.updateUser(user);
     }
     let scores = updateScores(req.body, scoresJSON.scores);
     let graphY =  updateGraph(req.body.score, scoresJSON.graphY);
@@ -134,7 +135,7 @@ apiRouter.post('/score', verifyAuth, async (req, res) => {
         scores: scores,
         yValues: graphY,
         highScore: highScore,
-        average: averageCount,
+        average: Number(average) / Number(averageCount),
     });
 });
 
