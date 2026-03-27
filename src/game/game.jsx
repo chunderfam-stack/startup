@@ -4,6 +4,7 @@ import './game.css';
 import {PlayArea} from './playArea';
 import {Statistics} from './statistics';
 import { data } from 'react-router-dom';
+import { GameEvent, GameNotifier } from './gameNotifier';
 
 export function Game(props) {
   const [scores, setScores] = React.useState([]);

@@ -10,7 +10,8 @@ import {Chart as ChartJS,
     Legend,
 } from "chart.js";
 import {Line} from "react-chartjs-2";
-import {Data, Options} from "./graphData"
+import {Options} from "./graphData"
+
 
 ChartJS.register(CategoryScale,
     LinearScale,
