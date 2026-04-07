@@ -5,6 +5,7 @@ const uuid = require('uuid');
 const app = express();
 const DB = require('./database.js');
 const { Db } = require('mongodb');
+const { peerProxy } = require('./peerProxy.js');
 
 const authCookieName ='token';
 
@@ -179,6 +180,8 @@ app.use((err, req, res, next) => {
     res.status(500).send({type : err.name, message : err.message});
 });
 
-app.listen(port, () => {
+const httpServer = app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });
+
+peerProxy(httpServer);
