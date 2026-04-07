@@ -44,7 +44,7 @@ export function PlayArea(props){
         setPlay(false);
         updateScores({name: userName.current, score: timer});
         props.callEvent({type: "time", time: timer, userName: props.userName});
-        GameEvent.broadcastEvent(userName, GameEvent.End, timer);
+        GameNotifier.broadcastEvent(userName, GameEvent.End, timer);
     }
 
     function doNothing(){

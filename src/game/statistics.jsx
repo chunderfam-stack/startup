@@ -51,6 +51,7 @@ export function Statistics(props){
                 </li>
             );
         }
+        console.log(messageArray);
         return messageArray;
     }  
 
