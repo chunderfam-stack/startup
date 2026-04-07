@@ -11,7 +11,7 @@ import {Chart as ChartJS,
 } from "chart.js";
 import {Line} from "react-chartjs-2";
 import {Options} from "./graphData"
-
+import {GameEvent, GameNotifier} from "./gameNotifier";
 
 ChartJS.register(CategoryScale,
     LinearScale,
@@ -23,6 +23,36 @@ ChartJS.register(CategoryScale,
 );
 
 export function Statistics(props){
+    const [events, setEvents] = React.useState([]);
+
+    React.useEffect(() => {
+        GameNotifier.addHandler(handleGameEvent);
+        return () => {
+            GameNotifier.removeHandler(handleGameEvent);
+        }
+    });
+
+    function handleGameEvent(event){
+        setEvents([...events, event]);
+    }
+
+    function createMessageArray(){
+        const messageArray = [];
+        for(const [i, event] of events.entries()){
+            let message = 'unknown';
+            if(event.type == GameEvent.End) message = `scored ${event.value.score}`;
+            else if(event.type == GameEvent.Start) message = `started a new game`;
+            else if(event.type == GameEvent.System) message = event.value.msg;
+
+            messageArray.push(
+                <li key={i} className={'player-name'}>
+                <span>{event.from.split(`@`)[0]}</span>
+                {message}
+                </li>
+            );
+        }
+        return messageArray;
+    }  
 
     return(
     <>
@@ -35,9 +65,7 @@ export function Statistics(props){
             <div className="updates">
                 <p id='updatesLabel'>updates:</p>
                 <ul className="notification">
-                    {props.eventsList.map((callout, i) => (
-                        <li className='player-name' key={i}>{callout}</li>
-                    ))}
+                    {createMessageArray()}
                 </ul>   
             </div>
             <div className="playerData">
