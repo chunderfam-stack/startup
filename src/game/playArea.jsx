@@ -1,6 +1,7 @@
 import React from 'react';
 import './game.css';
 import { Duck } from './duck';
+import { GameEvent, GameNotifier } from './gameNotifier';
 
 export function PlayArea(props){
     const [timer, setTimer] = React.useState(0);
@@ -12,6 +13,7 @@ export function PlayArea(props){
     function startPlay(){
         setTimer(0);
         setPlay(true);
+        GameNotifier.broadcastEvent(userName, GameEvent.start, {});
     }
 
     function readyGame(){
@@ -42,6 +44,7 @@ export function PlayArea(props){
         setPlay(false);
         updateScores({name: userName.current, score: timer});
         props.callEvent({type: "time", time: timer, userName: props.userName});
+        GameEvent.broadcastEvent(userName, GameEvent.End, timer);
     }
 
     function doNothing(){
