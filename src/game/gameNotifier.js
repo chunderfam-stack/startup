@@ -22,10 +22,10 @@ class GameEventNotifier{
         const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
         this.socket = new WebSocket(`${protocol}://${window.location.hostname}:${port}/ws`);
         this.socket.onopen = (event) => {
-            this.recieveEvent(new EventMessage('Reactionary ', GameEvent.System, {msg: "connected"}));
+            this.recieveEvent(new EventMessage({current: 'Reactionary '}, GameEvent.System, {msg: "connected"}));
         };
         this.socket.onclose = (event) => {
-            this.recieveEvent(new EventMessage('Reactionary', GameEvent.System, {msg:"disconnected"}));
+            this.recieveEvent(new EventMessage({current: 'Reactionary '}, GameEvent.System, {msg:"disconnected"}));
         };
         this.socket.onmessage = async (msg) => {
             try{
