@@ -38,20 +38,22 @@ export function Statistics(props){
 
     function createMessageArray(){
         const messageArray = [];
+        if(events.length > 5){
+            events.shift();
+        }
         for(const [i, event] of events.entries()){
             let message = 'unknown';
-            if(event.type == GameEvent.End) message = `scored ${event.value.score}`;
-            else if(event.type == GameEvent.Start) message = `started a new game`;
+            if(event.type == GameEvent.End) message = ` scored ${event.value.score}`; 
+            else if(event.type == GameEvent.Start) message = ` started a new game`;
             else if(event.type == GameEvent.System) message = event.value.msg;
-
+            else if(event.type == GameEvent.Fail) message = ` misclicked!`
             messageArray.push(
                 <li key={i} className={'player-name'}>
-                <span>{event.from.split(`@`)[0]}</span>
+                <span>{event.from.current}</span>
                 {message}
                 </li>
             );
         }
-        console.log(messageArray);
         return messageArray;
     }  
 

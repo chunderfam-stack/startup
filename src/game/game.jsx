@@ -30,6 +30,7 @@ export function Game(props) {
     ]
   };
 
+  
 
   React.useEffect(() => {
     fetch('/api/scores')
@@ -45,12 +46,23 @@ export function Game(props) {
         xs.push(x);
     }
     setXValues(xs);
-    const interval = setInterval(() =>{
-      callEvent({type: types[Math.floor(Math.random() * 2)], time: (Math.random() * 500 + 100).toFixed(1), userName: names[Math.floor(Math.random() * names.length)]});
-    }, 2000);
-    return () => clearInterval(interval);
+    GameNotifier.addHandler(handleGameEvent);
+    return () => {
+      GameNotifier.removeHandler(handleGameEvent);
+    }
   }, []);
-
+  function handleGameEvent(event){
+      if(event.type == GameEvent.End){
+        fetch('/api/scores')
+        .then((response) => response.json())
+        .then((scores) => {
+        setScores(scores.scores);
+        setHighScore(scores.highScore);
+        setYValues(scores.yValues);
+        setAverageTime(scores.average);
+      });
+      }
+  }
   function callEvent(props){
         setEventsList(previous => {
           let eventsList = [...previous];

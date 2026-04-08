@@ -13,13 +13,13 @@ export function PlayArea(props){
     function startPlay(){
         setTimer(0);
         setPlay(true);
-        GameNotifier.broadcastEvent(userName, GameEvent.start, {});
     }
 
     function readyGame(){
         setGame(true);
         setGameTimeOut(setTimeout(() => startPlay(), Math.random() * 4000 + 500));
         props.callEvent({type: "start", time: timer, userName: props.userName});
+        GameNotifier.broadcastEvent(userName, GameEvent.Start, timer);
     }
 
     React.useEffect(() => {
@@ -44,12 +44,13 @@ export function PlayArea(props){
         setPlay(false);
         updateScores({name: userName.current, score: timer});
         props.callEvent({type: "time", time: timer, userName: props.userName});
-        GameNotifier.broadcastEvent(userName, GameEvent.End, timer);
+        GameNotifier.broadcastEvent(userName, GameEvent.End, {score: timer});
     }
 
     function doNothing(){
         clearTimeout(gameTimeOut);
         setGame(false);
+        GameNotifier.broadcastEvent(userName, GameEvent.Fail, timer);
     }
 
     async function updateScores(newScore){
@@ -60,10 +61,6 @@ export function PlayArea(props){
         })
         .then((response) => response.json())
         .then((scores) => {
-            props.setScores(scores.scores);
-            props.setHighScore(scores.highScore);
-            props.setYValues(scores.yValues);
-            props.setAverageTime(scores.average);
         });
     }
     return (
